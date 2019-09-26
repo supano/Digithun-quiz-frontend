@@ -14,6 +14,7 @@ const router = new VueRouter({
   mode: 'history',
   routes: [
     { path: '/', component: Login},
+    { path: '/login', component: Login},
     { path: '/register', component: Register},
     { path: '/profile', component: Profile}
   ]
