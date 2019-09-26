@@ -2,8 +2,7 @@
   <div class="container">
     <div class="box">
       <h1>Register</h1>
-      <hr />
-      Email:
+      <hr />Email:
       <input type="email" v-model="email" class="input" />
       <br />Password:
       <input type="password" v-model="password" class="input" />
@@ -27,6 +26,9 @@ export default {
   },
   methods: {
     register: function() {
+      if (!this.email || !this.password) {
+        return alert("Please fill in your email and password");
+      }
       axios
         .post("http://localhost:9000/register", {
           email: this.email,
@@ -34,10 +36,10 @@ export default {
         })
         .then(res => {
           this.$router.push("/");
-          alert("Registration Success")
+          alert("Registration Success");
         })
         .catch(err => {
-            alert(err.response.data)
+          alert(err.response.data.message);
         });
     }
   }
@@ -47,6 +49,6 @@ export default {
 
 <style scoped>
 .is-primary {
-    width: 100%;
+  width: 100%;
 }
 </style>
